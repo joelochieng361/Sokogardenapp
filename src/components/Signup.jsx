@@ -46,7 +46,7 @@ const Signup = () => {
                     {/* {phone} */}
                     <input type="button" value="signup" className="btn btn-primary" /><br />
 
-                    Already have an account <link rel="stylesheet" href="" />
+                    Already have an account? <link to={'/signin'}>signin</ link>
 
 
                 </form>
