@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     //initialize the hooks
@@ -46,7 +46,7 @@ const Signup = () => {
                     {/* {phone} */}
                     <input type="button" value="signup" className="btn btn-primary" /><br />
 
-                    Already have an account? <link to={'/signin'}>signin</ link>
+                    Already have an account? <Link to={'/signin'}>signin</Link>
 
 
                 </form>
