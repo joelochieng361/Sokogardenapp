@@ -43,7 +43,9 @@ const Signup = () => {
             setemail("");
             setphone("");
             setpassword("");
-
+            setTimeout(() => {
+    setsuccess("");
+  }, 5000);
         }
         catch(error){
             //set back the loading to default
