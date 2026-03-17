@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Steps.
 //1. Created the user interface =>2 inputs i.e: email, password.
@@ -53,9 +53,11 @@ const Signin = () => {
                 //if user is there , definitely the user is found
                 //setSuccess("Login successfull")
                 //If it is successfull, let a person be directed to another page
+                // Store user details in local storage
+    localStorage.setItem("user", JSON.stringify(response.data.user));
                 navigate("/")
                 
-                //
+                
             }
             else{
                 //user is not found, means credentials entered is wrong
@@ -99,7 +101,10 @@ const Signin = () => {
 
                     <input type="submit"
                     value={"Signin"}
-                    className="btn btn-primary" />
+                    className="btn btn-primary" /> <br /> <br />
+
+                    Don't have an account? <Link to={'/signup'}>Register</Link>
+
                 </form>
             </div>
         </div>
@@ -107,3 +112,5 @@ const Signin = () => {
 }
 
 export default Signin;
+
+//how can you store the users details into the local storage
