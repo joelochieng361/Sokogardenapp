@@ -28,10 +28,10 @@ const Addproducts = () => {
       formdata.append("product_name", product_name);
       formdata.append("product_description", product_description);
       formdata.append("product_cost", product_cost);
-      formdata.append("product_photo", product_photo)
+      formdata.append("product_photos", product_photo)
 
       //interact with axios to help interact with post
-      const response = await axios.post ("https://modcom2026a.alwaysdata.net/api/add_products",formdata)
+      const response = await axios.post ("https://modcom2026a.alwaysdata.net/api/add_product",formdata)
 
       //set the loading
       setLoading(false)
@@ -43,8 +43,10 @@ const Addproducts = () => {
       setProductCost("");
       setProductPhoto("");
       setTimeout(() => {
-        setSuccess("")
-      }, 3000);
+
+        setSuccess("");
+
+      }, 5000);
 
     }
     catch{
@@ -60,8 +62,7 @@ const Addproducts = () => {
         <h3>Welcome to adding a product</h3>
         {/* Bind the loading hook */}
         {loading && <Loader />}
-
-        <h3 className="text-success">{success}</h3>
+        <h4 className="text-success">{success}</h4>
         <h4 className="text-danger">{error}</h4>
 
 
