@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Loader from './Loader';
 
 const Security = () => {
     const [email, setEmail] = useState("");
@@ -29,13 +30,20 @@ const Security = () => {
 
             // Replace with your actual Flask URL
             const response = await axios.post("http://modcom2026a.alwaysdata.net/api/security_protocol", formData);
+
+            if(response.data.message) {
+              setMessage(response.data.message);
+            }
+
             
-            if (response.data.token) {
+            
+            if(response.data.token) {
                 setToken(response.data.token);
                 setMessage("Token generated! Copy it into the field below.");
+            
             }
-        } catch (err) {
-            setError(err.response?.data?.message || "Failed to generate token");
+        } catch (error) {
+            setError(error.response.data.message || "Failed to generate token");
         } finally {
             setLoading(false);
         }
@@ -73,10 +81,13 @@ const Security = () => {
             <div className="col-md-6">
                 <h3 className="text-center">Security Protocol</h3>
                 <div className="card shadow p-4">
+                  <div className="card-header">
+                    {loading && <Loader />}
                     {message && <div className="alert alert-success">{message}</div>}
                     {error && <div className="alert alert-danger">{error}</div>}
                     {token && <div className="alert alert-info">Your Key: <strong>{token}</strong></div>}
-
+                  </div>
+                    
                     <form onSubmit={handleSubmit}>
                         <label>Credentials</label>
                         <input type="email"
