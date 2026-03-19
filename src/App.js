@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, link, Link }from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, link, Link, Links }from 'react-router-dom';
 import Getproducts from './components/Getproducts';
 import Addproducts from './components/Addproducts';
 import Signup from './components/Signup';
@@ -8,6 +8,7 @@ import Signin from './components/Signin';
 import Notfound from './components/Notfound';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Makepayment from './components/Makepayment';
+import Security from './components/Security';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Link to={"/signup"} className="btn btn-outline-warning">signup</Link>
           <Link to={"/signin"} className="btn btn-outline-warning">signin</Link>
           <Link to={"/addproducts"} className="btn btn-outline-warning">add products</Link>
+          <Link to={"/security"} className='btn btn-outline-warning'>security protocol</Link>
         </nav>
         {/* Below are our different routes together with the rendered components */}
         <Routes>
@@ -30,6 +32,7 @@ function App() {
           <Route path='signin' element={<Signin />} />
           <Route path='*' element={<Notfound />} />
           <Route path='makepayment' element={<Makepayment /> } />
+          <Route path='security' element = {<Security />} />
         </Routes>
       </div>
     </Router>
